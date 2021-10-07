@@ -1,6 +1,7 @@
 import random
 import pygame
 
+
 def generate_word():
     """
         This method will take all the word in a .txt file to create a list and then return
@@ -13,5 +14,11 @@ def generate_word():
     return words_list[random.randint(0, len(words_list)-1)]
 
 
+def calculate_x_position(secret_word):
+    word_len_in_screen = len(secret_word) * 48
+    x_positioning = (800 - word_len_in_screen) / 2
 
+    return x_positioning, 250
 
+def show_score(screen, score):
+    pass
