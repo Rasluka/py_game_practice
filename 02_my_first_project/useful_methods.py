@@ -1,5 +1,4 @@
 import random
-import pygame
 
 
 def generate_word():
@@ -11,7 +10,7 @@ def generate_word():
     words_list = [word.strip() for word in word_library_file]
     word_library_file.close()
 
-    return words_list[random.randint(0, len(words_list)-1)]
+    return words_list[random.randint(0, len(words_list) - 1)]
 
 
 def calculate_x_position(secret_word):
@@ -20,5 +19,8 @@ def calculate_x_position(secret_word):
 
     return x_positioning, 250
 
-def show_score(screen, score):
-    pass
+
+def show_score(screen, font, score):
+    score_to_screen = font.render(f'Guessed Words: {score}', True, (255, 255, 255))
+    screen.blit(score_to_screen, (0, 0))
+
