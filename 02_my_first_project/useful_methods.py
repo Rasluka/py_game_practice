@@ -21,6 +21,10 @@ def calculate_x_position(secret_word):
 
 
 def show_score(screen, font, score):
-    score_to_screen = font.render(f'Guessed Words: {score}', True, (255, 255, 255))
+    score_to_screen = font.render(f'Guessed Words: {score}', True, (0, 0, 255))
     screen.blit(score_to_screen, (0, 0))
 
+
+def show_remaining_attempts(screen, font, remaining_attempts):
+    score_to_screen = font.render(f'Attempts: {remaining_attempts}', True, (0, 0, 255))
+    screen.blit(score_to_screen, (560, 0))

@@ -8,17 +8,16 @@ def show_secret_word(scr, font, secret_word, to_print_str):
         This method will render the word to the screen
     """
     secret_word_location = useful_methods.calculate_x_position(secret_word)
-    word_to_screen = font.render(' '.join(to_print_str).upper(), True, (255, 255, 255))
+    word_to_screen = font.render(' '.join(to_print_str).upper(), True, (0, 0, 255))
     scr.blit(word_to_screen, secret_word_location)
-
 
 def show_user_guess(scr, usr_input, font):
     guess_word_location = (376, 450)
-    guess_to_screen = font.render(''.join(usr_input).upper(), True, (255, 255, 255))
+    guess_to_screen = font.render(''.join(usr_input).upper(), True, (0, 255, 255))
     scr.blit(guess_to_screen, guess_word_location)
 
 
-def check_guess(usr_input, secret_word, to_print_str, guessed_counter, guessed_chars):
+def check_guess(usr_input, secret_word, to_print_str, guessed_counter, guessed_chars, remaining_attempts):
     was_found = False
 
     for i in range(len(secret_word)):
@@ -32,12 +31,13 @@ def check_guess(usr_input, secret_word, to_print_str, guessed_counter, guessed_c
         guessed_sound = mixer.Sound('./sound_files/unlock_word.wav')
     else:
         guessed_sound = mixer.Sound('./sound_files/failed_word.wav')
+        remaining_attempts -= 1
 
     guessed_sound.play()
 
     usr_input.pop()
 
-    return guessed_counter
+    return [guessed_counter, remaining_attempts]
 
 
 def is_word_already_guessed(secret_word, guessed_counter):
