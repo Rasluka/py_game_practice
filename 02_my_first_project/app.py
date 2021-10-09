@@ -15,7 +15,7 @@ screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('Hangman!')
 game_icon = pygame.image.load('./img_files/hangman-game.png')
 pygame.display.set_icon(game_icon)
-background = pygame.image.load('./img_files/bg.jpg')
+# background = pygame.image.load('./img_files/bg.jpg')
 
 # background sound
 mixer.music.load('./sound_files/Stephen_Foster_-_Beautiful_Dreamer.wav')
@@ -39,8 +39,8 @@ remaining_attempts = len(secret_word) * 2
 
 while is_running:
 
-    screen.blit(background, (0, 0))
-
+    # screen.blit(background, (0, 0))
+    screen.fill((0, 0, 0))
     for event in pygame.event.get():
         if remaining_attempts > 0:
             print(secret_word)
